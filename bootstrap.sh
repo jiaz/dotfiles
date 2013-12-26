@@ -3,8 +3,16 @@ cd "$(dirname "${BASH_SOURCE}")"
 git pull origin master
 function doIt() {
 	rsync --exclude ".git/" --exclude ".DS_Store" --exclude "bootstrap.sh" \
-		--exclude "README.md" --exclude "LICENSE-MIT.txt" -av --no-perms . ~
-	source ~/.bash_profile
+		--exclude "README.md" --exclude "LICENSE-MIT.txt" --exclude "init/" -av --no-perms . ~
+
+	ln -fs ~/.zprezto/runcoms/zlogin ~/.zlogin
+	ln -fs ~/.zprezto/runcoms/zlogout ~/.zlogout
+	ln -fs ~/.zprezto/runcoms/zpreztorc ~/.zpreztorc
+	ln -fs ~/.zprezto/runcoms/zprofile ~/.zprofile
+	ln -fs ~/.zprezto/runcoms/zshenv ~/.zshenv
+	ln -fs ~/.zprezto/runcoms/zshrc ~/.zshrc
+
+	source ~/.zshrc
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt

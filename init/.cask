@@ -1,0 +1,25 @@
+which brew > /dev/null || ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+
+# Install native apps
+brew tap phinze/homebrew-cask
+brew install brew-cask
+
+function installcask() {
+	brew cask install "${@}" 2> /dev/null
+}
+
+brew install the_silver_searcher
+brew install ctags
+brew install reattach-to-user-namespace
+brew install tmux
+
+installcask dropbox
+installcask google-chrome
+installcask iterm2
+installcask macvim
+installcask sublime-text
+installcask the-unarchiver
+installcask vlc
+
+git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+vim -c "BundleInstall" -c "q" -c "q"
