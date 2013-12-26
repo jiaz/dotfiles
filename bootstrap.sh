@@ -12,7 +12,7 @@ function doIt() {
 	ln -fs ~/.zprezto/runcoms/zshenv ~/.zshenv
 	ln -fs ~/.zprezto/runcoms/zshrc ~/.zshrc
 
-	source ~/.zshrc
+	echo "Restart the terminal to reload settings."
 }
 if [ "$1" == "--force" -o "$1" == "-f" ]; then
 	doIt
